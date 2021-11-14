@@ -20,7 +20,9 @@ Graphics::~Graphics()
 void Graphics::on_pushButton_clicked()
 {
     scene->addText("Hello World");
-    
-	//blablabla
+    //abrakadabra Bobov update
+    //Tuto si intenzivne programujem
+    //TisickyRiadkov narocneho kodu,
+    //zabazpecujem intezivnu robotu
 }
 
