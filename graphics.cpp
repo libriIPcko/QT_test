@@ -24,5 +24,7 @@ void Graphics::on_pushButton_clicked()
     //Tuto si intenzivne programujem
     //TisickyRiadkov narocneho kodu,
     //zabazpecujem intezivnu robotu
+    //okamzite si to zmen!
+	//blablabla
 }
 
