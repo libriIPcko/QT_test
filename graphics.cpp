@@ -20,7 +20,6 @@ Graphics::~Graphics()
 void Graphics::on_pushButton_clicked()
 {
     scene->addText("Hello World");
-    //ui->graphicsView->show();
-    ui->graphicsView->show();
+
 }
 
