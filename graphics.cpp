@@ -20,7 +20,7 @@ Graphics::~Graphics()
 void Graphics::on_pushButton_clicked()
 {
     scene->addText("Hello World");
-    
+    //okamzite si to zmen!
 	//blablabla
 }
 
