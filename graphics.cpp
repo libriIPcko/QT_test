@@ -20,6 +20,6 @@ Graphics::~Graphics()
 void Graphics::on_pushButton_clicked()
 {
     scene->addText("Hello World");
-
+    //abrakadabra Bobov update
 }
 
