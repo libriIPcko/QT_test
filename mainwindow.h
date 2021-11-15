@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSerialPort>
+#include <QSerialPortInfo>
 
 
 QT_BEGIN_NAMESPACE
@@ -43,5 +45,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QSerialPort *port1;
+    QSerialPort *port2;
 };
 #endif // MAINWINDOW_H

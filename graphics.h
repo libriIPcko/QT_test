@@ -23,6 +23,12 @@ private slots:
 
 private:
     Ui::Graphics *ui;
+    QGraphicsScene *scene;
+    QGraphicsEllipseItem *ellipse;
+    QGraphicsRectItem *rectangle;
+    QGraphicsTextItem *text;
+    QGraphicsLineItem *line;
+
 
 
 };
