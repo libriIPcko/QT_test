@@ -16,6 +16,7 @@ Graphics::Graphics(QWidget *parent) :
 
     timerTest = new QTimer(this);
     timerTest->setInterval(300);
+    //The point which cause a problem.
     connect(timerTest,SIGNAL(QTimer::timeout),this,SLOT(timerTest_SLOT()));
 }
 
