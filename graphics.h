@@ -17,6 +17,8 @@ class Graphics : public QDialog
 public:
     explicit Graphics(QWidget *parent = nullptr);
     ~Graphics();
+private: signals:
+    void timerTest_SLOT();
 
 private slots:
     void on_pushButton_clicked();
@@ -28,7 +30,7 @@ private:
     QGraphicsRectItem *rectangle;
     QGraphicsTextItem *text;
     QGraphicsLineItem *line;
-
+    QTimer *timerTest;
 
 
 };

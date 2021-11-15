@@ -2,7 +2,8 @@
 #include "ui_graphics.h"
 
 
-
+float radius = 0.001;
+bool increment = true;
 
 Graphics::Graphics(QWidget *parent) :
     QDialog(parent),
@@ -12,6 +13,10 @@ Graphics::Graphics(QWidget *parent) :
 
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
+
+    timerTest = new QTimer(this);
+    timerTest->setInterval(300);
+    connect(timerTest,SIGNAL(QTimer::timeout),this,SLOT(timerTest_SLOT()));
 }
 
 Graphics::~Graphics()
@@ -58,5 +63,28 @@ void Graphics::on_pushButton_clicked()
     //scene->addItem(QGraphicsEllipseItem::setRect(20,20,21,21));
 
 
+}
+
+void Graphics::timerTest_SLOT(){
+    QPen pointPen(Qt::black);
+    pointPen.setWidth(0);
+    QBrush pointBrush(Qt::transparent);
+    Graphics::scene->clear();
+
+    if(increment == true){
+        radius = radius + 0.001;
+        Graphics::scene->addEllipse(20-radius,20-radius,20+radius,20+radius,pointPen,pointBrush);
+        if(radius > 1){
+            increment = false;
+        }
+
+    }
+    else{
+        radius = radius - 0.001;
+        Graphics::scene->addEllipse(20-radius,20-radius,20+radius,20+radius,pointPen,pointBrush);
+        if(radius < 0.001){
+            increment = true;
+        }
+    }
 }
 
