@@ -18,7 +18,7 @@ public:
     explicit Graphics(QWidget *parent = nullptr);
     ~Graphics();
 private: signals:
-    void timerTest_SLOT();
+    //void timerTest_SLOT();
 
 private slots:
     void on_pushButton_clicked();

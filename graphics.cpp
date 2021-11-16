@@ -17,7 +17,7 @@ Graphics::Graphics(QWidget *parent) :
     timerTest = new QTimer(this);
     timerTest->setInterval(300);
     //The point which cause a problem.
-    connect(timerTest,SIGNAL(QTimer::timeout),this,SLOT(timerTest_SLOT()));
+    //connect(timerTest,SIGNAL(QTimer::timeout),this,SLOT(timerTest_SLOT()));
 }
 
 Graphics::~Graphics()
@@ -66,6 +66,7 @@ void Graphics::on_pushButton_clicked()
 
 }
 
+/*
 void Graphics::timerTest_SLOT(){
     QPen pointPen(Qt::black);
     pointPen.setWidth(0);
@@ -88,4 +89,4 @@ void Graphics::timerTest_SLOT(){
         }
     }
 }
-
+*/
