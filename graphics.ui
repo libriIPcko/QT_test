@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1039</width>
-    <height>558</height>
+    <height>592</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -69,59 +69,6 @@
    </property>
    <property name="text">
     <string>GenPoints</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>502</x>
-     <y>10</y>
-     <width>211</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_2_maxLimit">
-   <property name="geometry">
-    <rect>
-     <x>890</x>
-     <y>10</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_3_step">
-   <property name="geometry">
-    <rect>
-     <x>890</x>
-     <y>40</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_4_minLimit">
-   <property name="geometry">
-    <rect>
-     <x>890</x>
-     <y>70</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>820</x>
-     <y>40</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Step</string>
    </property>
   </widget>
  </widget>
