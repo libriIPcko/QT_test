@@ -22,6 +22,7 @@ private: signals:
 
 private slots:
     void on_pushButton_clicked();
+    void timer_Event();
 
 private:
     Ui::Graphics *ui;

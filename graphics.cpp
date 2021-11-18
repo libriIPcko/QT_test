@@ -18,6 +18,7 @@ Graphics::Graphics(QWidget *parent) :
     timerTest->setInterval(300);
     //The point which cause a problem.
     //connect(timerTest,SIGNAL(QTimer::timeout),this,SLOT(timerTest_SLOT()));
+    connect(timerTest,&QTimer::timeout,this,&Graphics::timer_Event);
 }
 
 Graphics::~Graphics()
@@ -62,31 +63,33 @@ void Graphics::on_pushButton_clicked()
     scene->addEllipse(40-radius2,40-radius2,40+radius2,40+radius2,pointPen,pointBrush);
     scene->addEllipse(80-radius_1,80-radius_1,80+radius_1,80+radius_1,pointPen,pointBrush);
     //scene->addItem(QGraphicsEllipseItem::setRect(20,20,21,21));
+    timerTest->start();
 
 
 }
 
-/*
-void Graphics::timerTest_SLOT(){
+
+void Graphics::timer_Event(){
     QPen pointPen(Qt::black);
     pointPen.setWidth(0);
     QBrush pointBrush(Qt::transparent);
     Graphics::scene->clear();
 
     if(increment == true){
-        radius = radius + 0.001;
+        radius = radius + ui->lineEdit_3_step->text().toFloat();
         Graphics::scene->addEllipse(20-radius,20-radius,20+radius,20+radius,pointPen,pointBrush);
-        if(radius > 1){
+        if(radius > ui->lineEdit_2_maxLimit->text().toFloat()){
             increment = false;
         }
 
     }
     else{
-        radius = radius - 0.001;
+        radius = radius - ui->lineEdit_3_step->text().toFloat();
         Graphics::scene->addEllipse(20-radius,20-radius,20+radius,20+radius,pointPen,pointBrush);
-        if(radius < 0.001){
+        if(radius < ui->lineEdit_4_minLimit->text().toFloat()){
             increment = true;
         }
     }
+    ui->lineEdit->setText(QString::number(radius));
 }
-*/
+
