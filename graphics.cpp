@@ -62,6 +62,12 @@ void Graphics::on_pushButton_clicked()
     scene->addEllipse(80-radius_1,80-radius_1,80+radius_1,80+radius_1,pointPen,pointBrush);
     //scene->addItem(QGraphicsEllipseItem::setRect(20,20,21,21));
 
+    int x = 100;
+    int y = 100;
+    double rad = 1;
+    scene->addEllipse(x-rad, y-rad, rad*2.0, rad*2.0,
+                QPen(), QBrush(Qt::SolidPattern));
+
 
 }
 
