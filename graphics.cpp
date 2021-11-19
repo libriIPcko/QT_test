@@ -13,6 +13,10 @@ Graphics::Graphics(QWidget *parent) :
 
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
+    ui->graphicsView->setFixedHeight(500);
+    ui->graphicsView->setFixedWidth(700);
+    ui->graphicsView->setMaximumHeight(500);
+    ui->graphicsView->setMaximumWidth(700);
 
     timerTest = new QTimer(this);
     timerTest->setInterval(300);
@@ -73,6 +77,31 @@ void Graphics::on_pushButton_clicked()
 
 
 void Graphics::timer_Event(){
+
+}
+
+
+void Graphics::on_lineEdit_textEdited(const QString &arg1)
+{
+    scene->clear();
+    int MaxPoints = ui->lineEdit->text().toInt();
+    QRandomGenerator rand;
+    //rand.bounded(150);
+    for(int n=1;n<=MaxPoints;n++){
+        //int x = rand.generate();
+        int x = QRandomGenerator::global()->bounded(ui->graphicsView->width());
+        int y = QRandomGenerator::global()->bounded(ui->graphicsView->height());
+        double rad = 1;
+        scene->addEllipse(x-rad, y-rad, rad*2.0, rad*2.0,
+                    QPen(), QBrush(Qt::SolidPattern));
+
+        QString data = QObject::tr(" X -> ")
+                       +QString::number(x)
+                       +QObject::tr(" Y -> ")
+                       +QString::number(y);
+                       //+QObject::tr("\n");
+        ui->textBrowser->append(data);
+    }
 
 }
 
