@@ -23,6 +23,10 @@ private: signals:
     void readyRead();
 
 private slots:
+    void port1_RX();
+
+    void port2_RX();
+
     void on_pushButton_clicked();
 
     void on_pushButton_connect2_clicked();

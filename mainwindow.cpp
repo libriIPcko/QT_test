@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
     //QMetaObject::connectSlotsByName(MainWindow);
     port1 = new QSerialPort(this);
     port2 = new QSerialPort(this);
+
+    connect(port1,&QSerialPort::readyRead,this,&MainWindow::port1_RX);
+    connect(port2,&QSerialPort::readyRead,this,&MainWindow::port2_RX);
 }
 
 MainWindow::~MainWindow()
@@ -28,6 +31,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::port1_RX(){
+    ui->textBrowser_Port1->append("String has to been received");
+    ui->textBrowser_Port1->append(port1->readLine());
+}
+
+void MainWindow::port2_RX(){
+    ui->textBrowser_Port1->append("String has to been received");
+    ui->textBrowser_Port1->append(port1->readLine());
+}
 
 void MainWindow::on_pushButton_clicked()
 {
