@@ -1,5 +1,6 @@
 #include "graphics.h"
 #include "ui_graphics.h"
+#include "mainwindow.h"
 
 
 float radius = 0.001;
@@ -81,7 +82,8 @@ void Graphics::timer_Event(){
 }
 
 
-void Graphics::on_lineEdit_textEdited(const QString &arg1)
+//void Graphics::on_lineEdit_textEdited(const QString &arg1)
+void Graphics::on_lineEdit_textEdited()
 {
     scene->clear();
     int MaxPoints = ui->lineEdit->text().toInt();

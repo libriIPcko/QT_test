@@ -24,7 +24,8 @@ private slots:
     void on_pushButton_clicked();
     void timer_Event();
 
-    void on_lineEdit_textEdited(const QString &arg1);
+    //void on_lineEdit_textEdited(const QString &arg1);
+    void on_lineEdit_textEdited();
 
 private:
     Ui::Graphics *ui;

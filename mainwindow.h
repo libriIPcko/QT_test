@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QStackedWidget>
 
 
 QT_BEGIN_NAMESPACE
@@ -16,6 +17,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 
 private: signals:
@@ -51,5 +53,6 @@ private:
     Ui::MainWindow *ui;
     QSerialPort *port1;
     QSerialPort *port2;
+    QStackedWidget *stack;
 };
 #endif // MAINWINDOW_H

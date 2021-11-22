@@ -7,6 +7,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 #include <QtSerialPort/QtSerialPortVersion>
 #include <QtSerialPort/QtSerialPortDepends>
+#include <QStackedWidget>
 
 //4Test Case var
 int temp_count = 0;
@@ -18,7 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 {
     ui->setupUi(this);
-    //QMetaObject::connectSlotsByName(MainWindow);
+    //stack->addWidget(QMainWindow);
+    QMainWindow::setCentralWidget(stack);
+
     port1 = new QSerialPort(this);
     port2 = new QSerialPort(this);
 
@@ -277,6 +280,7 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
+    //You have to read only last line of text
     QString txt = ui->textBrowser_Port2->toPlainText();
     QByteArray data = txt.toUtf8();
     port2->write(data);
@@ -288,6 +292,7 @@ void MainWindow::on_pushButton_2_clicked()
 {
     Graphics gr;
     gr.setModal(true);
+
     gr.exec();
 }
 
