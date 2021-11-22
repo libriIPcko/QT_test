@@ -53,6 +53,6 @@ private:
     Ui::MainWindow *ui;
     QSerialPort *port1;
     QSerialPort *port2;
-    QStackedWidget *stack;
+    //QStackedWidget *stack;
 };
 #endif // MAINWINDOW_H

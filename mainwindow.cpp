@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     //stack->addWidget(QMainWindow);
-    QMainWindow::setCentralWidget(stack);
+    //QMainWindow::setCentralWidget(stack);
 
     port1 = new QSerialPort(this);
     port2 = new QSerialPort(this);
@@ -52,6 +52,7 @@ void MainWindow::on_pushButton_clicked()
     //QtSerialPortInfo::
     //a = QSerialPortInfo("COM7");
     ui->textBrowser->clear();
+
     const auto infos = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &info : infos) {
         QString s = QObject::tr("Port: ") + info.portName();// + "\n";
@@ -68,6 +69,7 @@ void MainWindow::on_pushButton_clicked()
         //ui->textBrowser->setPlainText(s);
         ui->textBrowser->append(s);
     }
+
 }
 
 void MainWindow::on_pushButton_connect2_clicked()
@@ -292,7 +294,6 @@ void MainWindow::on_pushButton_2_clicked()
 {
     Graphics gr;
     gr.setModal(true);
-
     gr.exec();
 }
 
