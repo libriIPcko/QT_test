@@ -41,8 +41,8 @@ void MainWindow::port1_RX(){
 }
 
 void MainWindow::port2_RX(){
-    ui->textBrowser_Port1->append("String has to been received");
-    ui->textBrowser_Port1->append(port1->readLine());
+    ui->textBrowser_Port2->append("String has to been received");
+    ui->textBrowser_Port2->append(port2->readLine());
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -71,11 +71,10 @@ void MainWindow::on_pushButton_clicked()
     }
 
 }
-
+/*
 void MainWindow::on_pushButton_connect2_clicked()
 {
     //4GetTxt
-
     port2->setBaudRate(9600);
     port2->setPortName(ui->textBrowser_Port2->toPlainText());
 
@@ -91,13 +90,12 @@ void MainWindow::on_pushButton_connect2_clicked()
         //port2.connect(SIGNAL(port2.readyRead()),SLOT(readSerial_2()));
         //QObject::connect(port2,SIGNAL(port.readyRead()),this,SLOT(readSerial_2()));
         //connect(port2,SIGNAL(readyRead()),this,SLOT(readSerial_2()));
-        /*
-         QTimer mTimer;
-        mTimer.setInterval(10);
-        mTimer.setSingleShot(false);
-        connect(mTimer,SIGNAL(timeout()),this,SLOT(readSerial2()));
-        mTimer.start();
-        */
+
+        //QTimer mTimer;
+        //mTimer.setInterval(10);
+        //mTimer.setSingleShot(false);
+        //connect(mTimer,SIGNAL(timeout()),this,SLOT(readSerial2()));
+        //mTimer.start();
 
     }
     else{
@@ -109,6 +107,7 @@ void MainWindow::on_pushButton_connect2_clicked()
         ui->pushButton_connect2->update();
     }
 }
+*/
 
 void MainWindow::readSerial_2(){
         ui->textBrowser_Port1->setPlainText("Received: ");
@@ -191,18 +190,18 @@ void MainWindow::on_pushButton_connect2_toggled(bool checked)
     temp_count++;
     ui->textBrowser_Port2->clear();
     //4GetTxt
-    QSerialPort Port2;
-    Port2.setBaudRate(9600);
+    //QSerialPort port2;
+    port2->setBaudRate(9600);
     //checked = !checked;
     if (checked == 1){
-        Port2.setPortName(ui->textEdit_Port2->toPlainText());
-        Port2.setDataBits(QSerialPort::Data8);
-        //Port2.openMode();
-        Port2.open(QIODevice::ReadWrite);
+        port2->setPortName(ui->textEdit_Port2->toPlainText());
+        port2->setDataBits(QSerialPort::Data8);
+        //port2.openMode();
+        port2->open(QIODevice::ReadWrite);
         QString data = QString::number(temp_count)+" Check status: "+QString::number(checked)+"\n";
         ui->textBrowser_Port2->insertPlainText(data);
 
-        if (Port2.isOpen() == 1){
+        if (port2->isOpen() == 1){
             //opened
             ui->pushButton_connect2->setAutoFillBackground(true);
             QPalette palette = ui->textBrowser_Port2->palette();
@@ -210,7 +209,6 @@ void MainWindow::on_pushButton_connect2_toggled(bool checked)
             ui->pushButton_connect2->setPalette(palette);
             ui->pushButton_connect2->update();
             ui->pushButton_connect2->setText("Connected");
-
         }
         else{
             //error, or closed
@@ -226,25 +224,26 @@ void MainWindow::on_pushButton_connect2_toggled(bool checked)
             ui->textBrowser_Port2->insertPlainText("Port Name: ");
             ui->textBrowser_Port2->insertPlainText(ui->textEdit_Port2->toPlainText());
             ui->textBrowser_Port2->insertPlainText("\n");
-            //ui->textBrowser_Port2->insertPlainText(Port2.);
+            //ui->textBrowser_Port2->insertPlainText(port2.);
             ui->textBrowser_Port2->insertPlainText("\tDeviceNotFoundError: ");
             //ui->textBrowser_Port2->insertPlainText(QString::number(QSerialPort::DeviceNotFoundError));
-            ui->textBrowser_Port2->insertPlainText(QString::number(Port2.DeviceNotFoundError));
+            ui->textBrowser_Port2->insertPlainText(QString::number(port2->DeviceNotFoundError));
             ui->textBrowser_Port2->insertPlainText("\n");
             ui->textBrowser_Port2->insertPlainText("\tOpenError: ");
-            ui->textBrowser_Port2->insertPlainText(QString::number(Port2.OpenError));
+            ui->textBrowser_Port2->insertPlainText(QString::number(port2->OpenError));
             ui->textBrowser_Port2->insertPlainText("\n");
             ui->textBrowser_Port2->insertPlainText("\tPermissionError: ");
-            ui->textBrowser_Port2->insertPlainText(QString::number(Port2.PermissionError));
+            ui->textBrowser_Port2->insertPlainText(QString::number(port2->PermissionError));
             ui->textBrowser_Port2->insertPlainText("\n");
         }
     }
     else{
+
         QString data = QString::number(temp_count)+" Check status: "+QString::number(checked)+"\n";
         ui->textBrowser_Port2->insertPlainText(data);
-        Port2.close();
-        if(Port2.isOpen()){
-            ui->pushButton_connect2->setText("Connected");
+        port2->close();
+        if(port2->isOpen()){
+            ui->pushButton_connect2->setText("Conected");
         }
         else {
             QPalette palette = ui->textBrowser_Port2->palette();

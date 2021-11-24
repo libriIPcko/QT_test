@@ -31,7 +31,7 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void on_pushButton_connect2_clicked();
+    //void on_pushButton_connect2_clicked();
 
     void readSerial_2();
 
