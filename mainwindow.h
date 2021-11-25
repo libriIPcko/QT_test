@@ -5,6 +5,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QStackedWidget>
+#include <QTextDocument>
 
 
 QT_BEGIN_NAMESPACE
@@ -49,10 +50,14 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_textBrowser_Port1_textChanged();
+
 private:
     Ui::MainWindow *ui;
     QSerialPort *port1;
     QSerialPort *port2;
+    QTextDocument *doc_port1;
+    QTextDocument *doc_port2;
     //QStackedWidget *stack;
 };
 #endif // MAINWINDOW_H

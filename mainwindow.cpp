@@ -9,6 +9,8 @@
 #include <QtSerialPort/QtSerialPortDepends>
 #include <QStackedWidget>
 
+#include <QMessageBox>
+
 //4Test Case var
 int temp_count = 0;
 
@@ -28,6 +30,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(port1,&QSerialPort::readyRead,this,&MainWindow::port1_RX);
     connect(port2,&QSerialPort::readyRead,this,&MainWindow::port2_RX);
 
+    //temporary Edit
+    ui->textEdit_Port1->append("COM66");
+    ui->textEdit_Port2->append("COM77");
+    //temporary Edit baudrate
+    port1->setBaudRate(9600);
+    port2->setBaudRate(9600);
 }
 
 MainWindow::~MainWindow()
@@ -36,12 +44,10 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::port1_RX(){
-    ui->textBrowser_Port1->append("String has to been received");
     ui->textBrowser_Port1->append(port1->readLine());
 }
 
 void MainWindow::port2_RX(){
-    ui->textBrowser_Port2->append("String has to been received");
     ui->textBrowser_Port2->append(port2->readLine());
 }
 
@@ -270,21 +276,23 @@ void MainWindow::on_pushButton_port2_clear_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    //QString data = ui->textBrowser_Port1->toPlainText();
-    //QByteArray ListOfString = ui->textBrowser_Port1->toPlainText();
-    QString txt = ui->textBrowser_Port1->toPlainText();
+    ui->textBrowser_Port1->moveCursor(QTextCursor::End,QTextCursor::MoveAnchor);
+    ui->textBrowser_Port1->moveCursor(QTextCursor::StartOfLine,QTextCursor::KeepAnchor);
+    QString txt = ui->textBrowser_Port1->textCursor().selectedText();
     QByteArray data = txt.toUtf8();
     port1->write(data);
-
+    //QMessageBox::information(this,"InformBox",txt);
 }
 
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    //You have to read only last line of text
-    QString txt = ui->textBrowser_Port2->toPlainText();
+    ui->textBrowser_Port2->moveCursor(QTextCursor::End,QTextCursor::MoveAnchor);
+    ui->textBrowser_Port2->moveCursor(QTextCursor::StartOfLine,QTextCursor::KeepAnchor);
+    QString txt = ui->textBrowser_Port2->textCursor().selectedText();
     QByteArray data = txt.toUtf8();
     port2->write(data);
+    //QMessageBox::information(this,"InformBox",txt);
 }
 
 
@@ -294,5 +302,11 @@ void MainWindow::on_pushButton_2_clicked()
     Graphics gr;
     gr.setModal(true);
     gr.exec();
+}
+
+
+void MainWindow::on_textBrowser_Port1_textChanged()
+{
+
 }
 
