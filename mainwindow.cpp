@@ -299,9 +299,11 @@ void MainWindow::on_pushButton_5_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    Graphics gr;
-    gr.setModal(true);
-    gr.exec();
+    //Definition of global variable
+    auto gr = new Graphics(this);
+    gr->show();
+    //For destruction of gr
+    //gr->deleteLater();
 }
 
 
