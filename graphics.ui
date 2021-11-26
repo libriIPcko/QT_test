@@ -77,7 +77,7 @@
     <string>GenPoints</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="lineEdit_points">
    <property name="geometry">
     <rect>
      <x>590</x>

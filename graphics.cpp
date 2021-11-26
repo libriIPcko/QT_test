@@ -86,7 +86,7 @@ void Graphics::timer_Event(){
 void Graphics::on_lineEdit_textEdited()
 {
     scene->clear();
-    int MaxPoints = ui->lineEdit->text().toInt();
+    int MaxPoints = ui->lineEdit_points->text().toInt();
     QRandomGenerator rand;
     //rand.bounded(150);
     for(int n=1;n<=MaxPoints;n++){

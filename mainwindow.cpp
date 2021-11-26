@@ -44,11 +44,14 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::port1_RX(){
-    ui->textBrowser_Port1->append(port1->readLine());
+    QString txt = "R:   "+port1->readLine()+"\n";
+    ui->textBrowser_Port1->append(txt);
+
 }
 
 void MainWindow::port2_RX(){
-    ui->textBrowser_Port2->append(port2->readLine());
+    QString txt = "R:   "+port2->readLine()+"\n";
+    ui->textBrowser_Port2->append(txt);
 }
 
 void MainWindow::on_pushButton_clicked()
