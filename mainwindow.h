@@ -52,6 +52,8 @@ private slots:
 
     void on_textBrowser_Port1_textChanged();
 
+    void on_pushButton_SP_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSerialPort *port1;

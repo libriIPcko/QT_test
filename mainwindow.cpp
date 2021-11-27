@@ -10,6 +10,7 @@
 #include <QStackedWidget>
 
 #include <QMessageBox>
+#include <QDebug>
 
 //4Test Case var
 int temp_count = 0;
@@ -30,12 +31,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(port1,&QSerialPort::readyRead,this,&MainWindow::port1_RX);
     connect(port2,&QSerialPort::readyRead,this,&MainWindow::port2_RX);
 
-    //temporary Edit
+    //temporary Edit, the preoffered COMport names
     ui->textEdit_Port1->append("COM66");
     ui->textEdit_Port2->append("COM77");
-    //temporary Edit baudrate
-    port1->setBaudRate(9600);
-    port2->setBaudRate(9600);
+    //Constant baudrate
+        //port1 - COM 3? - BaudRate = 115200 - mmWave:User/Application Port (CLI CFG port)
+        //port2 - COM 4? - BaudRate = 921600 - mmWave:Auxiliry Data Port (Demo output DATA_port)
+    port1->setBaudRate(9600);   //COM4 -
+    port2->setBaudRate(9600);   //COM4 -
 }
 
 MainWindow::~MainWindow()
@@ -314,4 +317,23 @@ void MainWindow::on_textBrowser_Port1_textChanged()
 {
 
 }
+
+
+void MainWindow::on_pushButton_SP_clicked()
+{
+    QTimer tim;
+
+    QString text = ui->textBrowser_Port1->toPlainText();
+    QStringList list = text.split("\n");
+
+    /*
+    int step = 0;
+    while(step < list.length()){
+        qInfo() << "list: " <<list[step];
+        QByteArray data = list[step].toUtf8()+"\n";
+        port1->write(data);
+        step++;
+    }
+    */
+    }
 
