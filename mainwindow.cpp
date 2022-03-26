@@ -14,6 +14,8 @@
 
 //4Test Case var
 int temp_count = 0;
+int Baudrate_port1 = 115200;
+int Baudrate_port2 = 921600;
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -37,8 +39,11 @@ MainWindow::MainWindow(QWidget *parent)
     //Constant baudrate
         //port1 - COM 3? - BaudRate = 115200 - mmWave:User/Application Port (CLI CFG port)
         //port2 - COM 4? - BaudRate = 921600 - mmWave:Auxiliry Data Port (Demo output DATA_port)
-    port1->setBaudRate(9600);   //COM4 -
-    port2->setBaudRate(9600);   //COM4 -
+    //port1->setBaudRate(9600);   //COM4 -
+    //port2->setBaudRate(9600);
+
+    port2->setBaudRate(Baudrate_port2,QSerialPort::AllDirections);   //mmWave:Auxiliry Data Port (Demo output DATA_port)
+
 }
 
 MainWindow::~MainWindow()
@@ -140,8 +145,10 @@ void MainWindow::on_pushButton_connect1_toggled(bool checked)
         port1->setDataBits(QSerialPort::Data8);
         //port1.openMode();
         port1->open(QIODevice::ReadWrite);
+        port1->setBaudRate(Baudrate_port1,QSerialPort::AllDirections);   //mmWave:User/Application Port (CLI CFG port)
         QString data = QString::number(temp_count)+" Check status: "+QString::number(checked)+"\n";
         ui->textBrowser_Port1->insertPlainText(data);
+        ui->textBrowser_Port1->insertPlainText(QString::number(port1->baudRate()));
 
         if (port1->isOpen() == 1){
             //opened
@@ -210,8 +217,10 @@ void MainWindow::on_pushButton_connect2_toggled(bool checked)
         port2->setDataBits(QSerialPort::Data8);
         //port2.openMode();
         port2->open(QIODevice::ReadWrite);
+        port2->setBaudRate(Baudrate_port2,QSerialPort::AllDirections);   //mmWave:User/Application Port (CLI CFG port)
         QString data = QString::number(temp_count)+" Check status: "+QString::number(checked)+"\n";
         ui->textBrowser_Port2->insertPlainText(data);
+        ui->textBrowser_Port2->insertPlainText(QString::number(port2->baudRate()));
 
         if (port2->isOpen() == 1){
             //opened

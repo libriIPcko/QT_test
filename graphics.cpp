@@ -29,8 +29,7 @@ Graphics::~Graphics()
     delete ui;
 }
 
-void Graphics::on_pushButton_clicked()
-{    
+void Graphics::on_pushButton_clicked(){    
     QBrush greenBrush(Qt::green);
     QBrush blueBrush(Qt::blue);
     QPen outlinePen(Qt::black);
@@ -53,6 +52,7 @@ void Graphics::on_pushButton_clicked()
         //Vertical
         scene->addLine((n*ui->graphicsView->width()/num_Axis),0,(n*ui->graphicsView->width()/num_Axis),ui->graphicsView->height(),axisPen);
     }
+    /*
     //dot generator
     //put dot
     float radius = 0.000000000000000001;
@@ -66,13 +66,14 @@ void Graphics::on_pushButton_clicked()
     scene->addEllipse(40-radius2,40-radius2,40+radius2,40+radius2,pointPen,pointBrush);
     scene->addEllipse(80-radius_1,80-radius_1,80+radius_1,80+radius_1,pointPen,pointBrush);
     //scene->addItem(QGraphicsEllipseItem::setRect(20,20,21,21));
-
+    */
+    /*
     int x = 100;
     int y = 100;
     double rad = 1;
     scene->addEllipse(x-rad, y-rad, rad*2.0, rad*2.0,
                 QPen(), QBrush(Qt::SolidPattern));
-
+    */
 
 }
 
@@ -81,11 +82,15 @@ void Graphics::timer_Event(){
 
 }
 
+//void Graphics::on_lineEdit_textEdited()
+void Graphics::on_lineEdit_textEdited(const QString &arg1){
 
-//void Graphics::on_lineEdit_textEdited(const QString &arg1)
-void Graphics::on_lineEdit_textEdited()
-{
+}
+
+
+void Graphics::on_lineEdit_points_editingFinished(){
     scene->clear();
+    ui->textBrowser->clear();
     int MaxPoints = ui->lineEdit_points->text().toInt();
     QRandomGenerator rand;
     //rand.bounded(150);
@@ -96,7 +101,6 @@ void Graphics::on_lineEdit_textEdited()
         double rad = 1;
         scene->addEllipse(x-rad, y-rad, rad*2.0, rad*2.0,
                     QPen(), QBrush(Qt::SolidPattern));
-
         QString data = QObject::tr(" X -> ")
                        +QString::number(x)
                        +QObject::tr(" Y -> ")
@@ -104,6 +108,5 @@ void Graphics::on_lineEdit_textEdited()
                        //+QObject::tr("\n");
         ui->textBrowser->append(data);
     }
-
 }
 
